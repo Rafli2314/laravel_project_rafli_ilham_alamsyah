@@ -18,3 +18,20 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Admin Dashboard
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'admin'])->name('admin.dashboard');
+
+// User Dashboard
+Route::get('/user/dashboard', function () {
+    return view('user.dashboard');
+})->middleware(['auth'])->name('user.dashboard');
+
+// User Dashboard
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    })->name('home');
+});
