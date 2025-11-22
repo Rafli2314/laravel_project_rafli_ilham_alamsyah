@@ -25,7 +25,7 @@ scrollbar.css') }}" />
 }}" />
 <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 <script src="{{ asset('assets/js/config.js') }}"></script>
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+{{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 <body>
 <div class="layout-wrapper layout-content-navbar">

@@ -34,4 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('home');
     })->name('home');
+
+// route category
+Route::resource('/category', CategoryController::class);
 });

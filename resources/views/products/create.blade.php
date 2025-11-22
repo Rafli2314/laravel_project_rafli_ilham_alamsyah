@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.sneat')
 @section('title', 'Tambah Produk')
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
 {{-- Breadcrumb dinamis --}}
 <x-breadcrumb :items="[
-'Produk' => route('products.index'),
-'Tambah Produk' => ''
+'Kategori' => route('category.index'),
+'Tambah Kategori' => ''
 ]" />
 <!-- Basic Layout & Basic with Icons -->
 <div class="row">
@@ -18,25 +18,11 @@
 <div class="col-xxl">
 <div class="card mb-4">
 <div class="card-body">
-<form>
+<form action="{{ route('category.store') }}" method="POST">
+@csrf
 <div class="row mb-3">
-<label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama
-</label>
-<div class="col-sm-10">
-<div class="input-group input-group-merge">
-<input
-type="file"
-class="form-control @error('foto') is-invalid @enderror"
-id="inputGroupFile04"
-aria-describedby="inputGroupFileAddon04"
-aria-label="Upload"
-/>
-</div>
-</div>
-</div>
-<div class="row mb-3"><div class="row mb-3">
-<label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama
-</label>
+<label class="col-sm-2 col-form-label" for="basic-icon-default-
+fullname">Nama Kategori</label>
 <div class="col-sm-10">
 <div class="input-group input-group-merge">
 <span id="basic-icon-default-fullname2" class="input-group-text"
@@ -44,68 +30,19 @@ aria-label="Upload"
 ></span>
 <input
 type="text"
-class="form-control @error('nama') is-invalid @enderror"
+name="nama"
+class="w-75 pr-10 border-gray-300 rounded-md shadow-sm
+focus:border-blue-500 focus:ring focus:ring-blue-200 @error('nama') border-red-500
+@enderror"
 id="basic-icon-default-fullname"
 placeholder="Silahkan isi nama produk"
 aria-label="Silahkan isi nama produk"
 aria-describedby="basic-icon-default-fullname2"
+value="{{ old('nama') }}"
 />
-</div>
-</div>
-</div>
-<div class="row mb-3">
-<label class="col-sm-2 form-label" for="basic-icon-default-
-message">Deskripsi</label>
-<div class="col-sm-10">
-<div class="input-group input-group-merge">
-<span id="basic-icon-default-message2" class="input-group-text"
-><i class="bx bx-comment-detail"></i
-></span>
-<textarea
-id="basic-icon-default-message"
-class="form-control @error('deskripsi') is-invalid @enderror"
-placeholder="Silahkan isi deskripsi produk"
-aria-label="Silahkan isi deskripsi produk"
-aria-describedby="basic-icon-default-message2"
-></textarea>
-</div>
-</div>
-</div>
-<div class="row mb-3">
-<label class="col-sm-2 form-label" for="basic-icon-default-
-phone">Harga</label>
-<div class="col-sm-10">
-<div class="input-group input-group-merge">
-<span id="basic-icon-default-phone2" class="input-group-text"
-><i class="bx bx-dollar-circle"></i
-></span>
-<input
-type="text"
-id="basic-icon-default-phone"
-class="form-control phone-mask @error('harga') is-invalid @enderror"
-placeholder="1,000,00"
-aria-label="1,000"
-aria-describedby="basic-icon-default-phone2"
-/>
-</div>
-</div>
-</div>
-<div class="row mb-3"><div class="row mb-3">
-<label class="col-sm-2 form-label" for="basic-icon-default-
-phone">Stok</label>
-<div class="col-sm-10">
-<div class="input-group input-group-merge">
-<span id="basic-icon-default-phone2" class="input-group-text"
-><i class="bx bx-package"></i
-></span>
-<input
-type="text"
-id="basic-icon-default-phone"
-class="form-control phone-mask @error('stok') is-invalid @enderror"
-placeholder="10"
-aria-label="10"
-aria-describedby="basic-icon-default-phone2"
-/>
+@error('nama')
+<div class="invalid-feedback">{{ $message }}</div>
+@enderror
 </div>
 </div>
 </div>
@@ -114,7 +51,7 @@ aria-describedby="basic-icon-default-phone2"
 <button type="submit" class="btn btn-primary">Simpan</button>
 </div>
 </div>
-</form>
+</form></form>
 </div>
 </div>
 </div>
